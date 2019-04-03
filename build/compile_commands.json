@@ -1,0 +1,19 @@
+[
+{
+  "directory": "/home/diego/dev/hv1/build",
+  "command": "/bin/g++    -g   -std=c++17 -o CMakeFiles/hv1.dir/src/hv1.cpp.o -c /home/diego/dev/hv1/src/hv1.cpp",
+  "file": "/home/diego/dev/hv1/src/hv1.cpp"
+},
+
+{
+  "directory": "/home/diego/dev/hv1/build",
+  "command": "/bin/g++    -g   -std=c++17 -o CMakeFiles/hv1.dir/src/main.cpp.o -c /home/diego/dev/hv1/src/main.cpp",
+  "file": "/home/diego/dev/hv1/src/main.cpp"
+},
+
+{
+  "directory": "/home/diego/dev/hv1/build",
+  "command": "/bin/g++    -g   -std=c++17 -o CMakeFiles/hv1.dir/src/scanner.cpp.o -c /home/diego/dev/hv1/src/scanner.cpp",
+  "file": "/home/diego/dev/hv1/src/scanner.cpp"
+}
+]
