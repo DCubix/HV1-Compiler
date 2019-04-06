@@ -1,44 +1,57 @@
 #include <iostream>
 
 #include "hv1.h"
+#include "asm.h"
 
 int main(int argc, char** argv) {
-	std::vector<u8> prog = {
-		rdi, 0, // N
-		lca, 1,
-		stm, 1, // A
-		lca, 0,
-		stm, 2, // B
+	std::string progs = R"(
+	rdi $0
+	lda 1
 
-		// PRINT B
-		out, 2,
+	stm $1
+	lda 0
+	stm $2
 
-		lma, 0,
-		jez, 99, // Is zero?
+	out $2
+	lda $1
+	jez end
 
-		// PRINT A
-		out, 1,
+	cal dec0
 
-		// Sum A+B
-		lma, 1,
-		add, 2,
-		stm, 2,
+loop:
+	out $1
 
-		// Swap A<->B
-		lma, 1,
-		stm, 3,
-		lma, 2,
-		stm, 1,
-		lma, 3,
-		stm, 2,
+	lda $1
+	add $2
+	stm $2
 
-		out, 1,
-		out, 2,
+	lda $1
+	stm $3
+	lda $2
+	stm $1
+	lda $3
+	stm $2
 
-		hlt
-	};
+	cal dec0
+
+	jnz loop
+
+end:
+	rdk $100
+	hlt
+
+dec0:
+	lda $0
+	sub 1
+	stm $0
+	ret
+
+)";
+
+	Program prog = ASM::assemble(progs);
 
 	HV1 hv1(prog);
+	hv1.dump("prog.hvb");
 	hv1.run();
 
 	return 0;

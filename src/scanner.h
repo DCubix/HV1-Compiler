@@ -19,6 +19,7 @@ public:
 	Scanner(const std::vector<T>& input) : m_data(input) {}
 
 	bool hasNext() const { return !m_data.empty(); }
+	size_t len() const { return m_data.size(); }
 
 	TOp scan() {
 		if (!hasNext()) return {};
